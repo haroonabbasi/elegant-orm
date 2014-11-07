@@ -32,13 +32,11 @@ class QueryBuilder {
 		$this->db_conn = clone $this->db_conn;
 	}
 
-	function select($columns = array())
+	function select($columns = array(), $escape = NULL)
 	{
 		if (empty($columns)) $columns = '*';
 
-		elseif (is_array($columns)) $columns = implode(', ', $columns);
-
-		$this->db_conn->select($columns);
+		$this->db_conn->select($columns, $escape);
 	}
 
 	function insert($data)
